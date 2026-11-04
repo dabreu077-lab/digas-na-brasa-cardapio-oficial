@@ -78,6 +78,9 @@ border-radius:8px;font-weight:bold}
   <label for="dcNome">Seu nome</label>
   <input id="dcNome" placeholder="Digite seu nome" autocomplete="name">
 
+  <label for="dcTelefone">Telefone para contato</label>
+  <input id="dcTelefone" type="tel" inputmode="tel" placeholder="DDD + número" autocomplete="tel">
+
   <label>Forma de recebimento</label>
   <select id="dcEntrega">
    <option value="0">Entrega — demais bairros • R$ 3,00</option>
@@ -117,6 +120,8 @@ border-radius:8px;font-weight:bold}
   <textarea id="dcObs" placeholder="Alguma observação para o pedido?"></textarea>
 
   <div class="summary">
+   <strong>Itens do pedido</strong>
+   <div id="dcItens" style="white-space:pre-line;margin:8px 0 12px"></div>
    <div id="dcSubtotal"></div>
    <div id="dcTaxa"></div>
    <div class="grand" id="dcTotal"></div>
@@ -187,6 +192,12 @@ function valorDigitado(v){
 }
 function atualizarCheckout(){
  const subtotal=subtotalCheckout(),taxa=taxaCheckout(),total=subtotal+taxa;
+
+ const itens=products.filter(p=>cart[p.id]);
+ document.getElementById("dcItens").textContent=itens.length
+  ?itens.map(p=>(cart[p.id]+"x "+p.name+" — "+money(p.price*cart[p.id]))).join("\n")
+  :"Nenhum produto adicionado";
+
  document.getElementById("dcSubtotal").textContent="Produtos: "+money(subtotal);
  document.getElementById("dcTaxa").textContent="Entrega: "+money(taxa);
  document.getElementById("dcTotal").textContent="TOTAL: "+money(total);
@@ -217,6 +228,7 @@ function enviarCheckout(){
  if(!selected.length){alert("Adicione produtos ao pedido.");return}
 
  const nome=document.getElementById("dcNome").value.trim();
+ const telefone=document.getElementById("dcTelefone").value.trim();
  const modo=Number(document.getElementById("dcEntrega").value);
  const endereco=document.getElementById("dcEndereco").value.trim();
  const pagamento=document.getElementById("dcPagamento").value;
@@ -249,7 +261,9 @@ function enviarCheckout(){
  ];
  const id=Math.random().toString(36).substring(2,10).toUpperCase();
  let msg="*PEDIDO #"+id+" — DIGAS NA BRASA*\n\n";
- msg+="Cliente: "+nome+"\n\n";
+ msg+="Cliente: "+nome+"\n";
+ if(telefone)msg+="Telefone: "+telefone+"\n";
+ msg+="\n";
  selected.forEach(p=>{
   msg+=cart[p.id]+"x "+p.name+" — "+money(p.price*cart[p.id])+"\n";
  });
