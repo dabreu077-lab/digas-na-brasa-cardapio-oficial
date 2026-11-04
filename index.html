@@ -29,6 +29,31 @@ button{cursor:pointer}
 .cart{position:sticky;bottom:0;background:#181818;border-top:2px solid #ff6d00;padding:14px;text-align:center;margin-top:25px}
 .cart button{background:#ff6d00;border:0;padding:14px 24px;border-radius:10px;font-weight:bold}
 footer{text-align:center;padding:25px;color:#aaa}
+
+/* DIGAS_CHECKOUT_APK_V1 */
+.checkout-overlay{position:fixed;inset:0;background:#000e;z-index:9999;
+display:none;overflow-y:auto;padding:16px}
+.checkout-box{max-width:520px;margin:20px auto;background:#191919;
+border:1px solid #ff6d00;border-radius:16px;padding:20px}
+.checkout-box h2{margin-top:0;color:#ff6d00}
+.checkout-box label{display:block;margin:14px 0 6px;font-weight:bold}
+.checkout-box input,.checkout-box select,.checkout-box textarea{
+width:100%;padding:13px;border-radius:8px;border:1px solid #555;
+background:#292929;color:white;font-size:16px}
+.checkout-box textarea{min-height:75px;resize:vertical}
+.checkout-box .choice{display:flex;align-items:center;gap:9px;
+font-weight:normal;margin:12px 0}
+.checkout-box .choice input{width:auto;accent-color:#ff6d00}
+.checkout-box .summary{background:#252525;padding:14px;
+border-radius:10px;margin:16px 0;line-height:1.9}
+.checkout-box .grand{color:#ff6d00;font-size:21px;font-weight:bold}
+.checkout-box .actions{display:flex;gap:10px;margin-top:16px}
+.checkout-box .actions button{flex:1;padding:14px;border:0;
+border-radius:8px;font-weight:bold}
+.checkout-box .send{background:#ff6d00;color:#111}
+.checkout-box .cancel{background:#444;color:white}
+.checkout-box .hint{color:#bbb;font-size:13px}
+
 </style>
 </head>
 <body>
@@ -46,6 +71,63 @@ footer{text-align:center;padding:25px;color:#aaa}
 <button onclick="checkout()">FINALIZAR PEDIDO NO WHATSAPP ➜</button>
 </div>
 <footer>🔥 DIGAS NA BRASA • São Francisco • Minas Gerais</footer>
+
+<div id="digasCheckout" class="checkout-overlay">
+ <section class="checkout-box">
+  <h2>🔥 FINALIZAR PEDIDO</h2>
+  <label for="dcNome">Seu nome</label>
+  <input id="dcNome" placeholder="Digite seu nome" autocomplete="name">
+
+  <label>Forma de recebimento</label>
+  <select id="dcEntrega">
+   <option value="0">Entrega — demais bairros • R$ 3,00</option>
+   <option value="1">Entrega — Mirantes • R$ 5,00</option>
+   <option value="2">Entrega — Cidade Nova • R$ 5,00</option>
+   <option value="3">Entrega — Café no Buli • R$ 5,00</option>
+   <option value="4">Retirar na loja • grátis</option>
+  </select>
+
+  <div id="dcEnderecoArea">
+   <label for="dcEndereco">Endereço completo</label>
+   <textarea id="dcEndereco" placeholder="Rua, número, bairro e referência"></textarea>
+  </div>
+  <div id="dcRetirada" class="hint" style="display:none">
+   Retirada: Rua Adão Vieira, 1640, Aparecida
+  </div>
+
+  <label>Forma de pagamento</label>
+  <select id="dcPagamento">
+   <option value="Pix">Pix</option>
+   <option value="Cartão na entrega ou retirada">Cartão na entrega ou retirada</option>
+   <option value="Dinheiro">Dinheiro</option>
+  </select>
+
+  <div id="dcPix" class="hint">
+   Pix CNPJ: 62.709.645/0001-55<br>
+   Confirme o pedido com a loja antes de pagar.
+  </div>
+
+  <div id="dcTrocoArea" style="display:none">
+   <label for="dcTroco">Troco para quanto?</label>
+   <input id="dcTroco" inputmode="decimal" placeholder="Ex: 100,00">
+   <p id="dcTrocoResultado" class="hint"></p>
+  </div>
+
+  <label for="dcObs">Observações</label>
+  <textarea id="dcObs" placeholder="Alguma observação para o pedido?"></textarea>
+
+  <div class="summary">
+   <div id="dcSubtotal"></div>
+   <div id="dcTaxa"></div>
+   <div class="grand" id="dcTotal"></div>
+  </div>
+  <div class="actions">
+   <button class="cancel" onclick="fecharCheckout()">VOLTAR</button>
+   <button class="send" onclick="enviarCheckout()">ENVIAR PEDIDO ➜</button>
+  </div>
+ </section>
+</div>
+
 <script>
 let products=[],cart={},category="Todos";
 const money=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
@@ -80,15 +162,121 @@ function update(){
  let total=products.reduce((a,p)=>a+p.price*(cart[p.id]||0),0);
  document.getElementById("total").textContent=`${qty} itens • ${money(total)}`;
 }
+
 function checkout(){
- let selected=products.filter(p=>cart[p.id]);
+ const selected=products.filter(p=>cart[p.id]);
  if(!selected.length){alert("Adicione produtos ao pedido.");return}
- let total=selected.reduce((a,p)=>a+p.price*cart[p.id],0);
- let msg="🔥 *PEDIDO - DIGAS NA BRASA*%0A";
- selected.forEach(p=>msg+=`%0A${cart[p.id]}x ${p.name} - ${money(p.price*cart[p.id])}`);
- msg+=`%0A%0A*TOTAL: ${money(total)}*`;
- location.href="https://wa.me/5538999448465?text="+msg;
+ document.getElementById("digasCheckout").style.display="block";
+ atualizarCheckout();
 }
+function fecharCheckout(){
+ document.getElementById("digasCheckout").style.display="none";
+}
+function taxaCheckout(){
+ const modo=Number(document.getElementById("dcEntrega").value);
+ return modo===4?0:(modo===0?3:5);
+}
+function subtotalCheckout(){
+ return products.reduce((a,p)=>a+p.price*(cart[p.id]||0),0);
+}
+function valorDigitado(v){
+ v=String(v||"").trim().replace(/\s/g,"").replace("R$","");
+ if(v.includes(","))v=v.replace(/\./g,"").replace(",",".");
+ const n=Number(v);
+ return Number.isFinite(n)?n:NaN;
+}
+function atualizarCheckout(){
+ const subtotal=subtotalCheckout(),taxa=taxaCheckout(),total=subtotal+taxa;
+ document.getElementById("dcSubtotal").textContent="Produtos: "+money(subtotal);
+ document.getElementById("dcTaxa").textContent="Entrega: "+money(taxa);
+ document.getElementById("dcTotal").textContent="TOTAL: "+money(total);
+
+ const retirada=document.getElementById("dcEntrega").value==="4";
+ document.getElementById("dcEnderecoArea").style.display=retirada?"none":"block";
+ document.getElementById("dcRetirada").style.display=retirada?"block":"none";
+
+ const pagamento=document.getElementById("dcPagamento").value;
+ document.getElementById("dcPix").style.display=pagamento==="Pix"?"block":"none";
+ document.getElementById("dcTrocoArea").style.display=pagamento==="Dinheiro"?"block":"none";
+
+ if(pagamento==="Dinheiro")calcularTrocoCheckout();
+}
+function calcularTrocoCheckout(){
+ const recebido=valorDigitado(document.getElementById("dcTroco").value);
+ const total=subtotalCheckout()+taxaCheckout();
+ const resultado=document.getElementById("dcTrocoResultado");
+ if(!Number.isFinite(recebido)){
+  resultado.textContent="Informe o valor para troco";return;
+ }
+ const diferenca=recebido-total;
+ resultado.textContent=diferenca>=0?
+  "Troco: "+money(diferenca):"Valor insuficiente";
+}
+function enviarCheckout(){
+ const selected=products.filter(p=>cart[p.id]);
+ if(!selected.length){alert("Adicione produtos ao pedido.");return}
+
+ const nome=document.getElementById("dcNome").value.trim();
+ const modo=Number(document.getElementById("dcEntrega").value);
+ const endereco=document.getElementById("dcEndereco").value.trim();
+ const pagamento=document.getElementById("dcPagamento").value;
+ const obs=document.getElementById("dcObs").value.trim();
+ const subtotal=subtotalCheckout();
+ const taxa=taxaCheckout();
+ const total=subtotal+taxa;
+
+ if(!nome){alert("Informe seu nome.");document.getElementById("dcNome").focus();return}
+ if(modo!==4&&!endereco){
+  alert("Informe seu endereço completo.");
+  document.getElementById("dcEndereco").focus();return;
+ }
+
+ let recebido=0;
+ if(pagamento==="Dinheiro"){
+  recebido=valorDigitado(document.getElementById("dcTroco").value);
+  if(!Number.isFinite(recebido)||recebido<total){
+   alert("Informe um valor em dinheiro igual ou maior que o total.");
+   document.getElementById("dcTroco").focus();return;
+  }
+ }
+
+ const modos=[
+  "Entrega — demais bairros • R$ 3,00",
+  "Entrega — Mirantes • R$ 5,00",
+  "Entrega — Cidade Nova • R$ 5,00",
+  "Entrega — Café no Buli • R$ 5,00",
+  "Retirar na loja • grátis"
+ ];
+ const id=Math.random().toString(36).substring(2,10).toUpperCase();
+ let msg="*PEDIDO #"+id+" — DIGAS NA BRASA*\n\n";
+ msg+="Cliente: "+nome+"\n\n";
+ selected.forEach(p=>{
+  msg+=cart[p.id]+"x "+p.name+" — "+money(p.price*cart[p.id])+"\n";
+ });
+ msg+="\n"+modos[modo]+"\n";
+ if(modo===4)msg+="Retirada: Rua Adão Vieira, 1640, Aparecida\n";
+ else msg+="Endereço: "+endereco+"\n";
+ msg+="\nSubtotal: "+money(subtotal);
+ msg+="\nEntrega: "+money(taxa);
+ msg+="\n*TOTAL: "+money(total)+"*";
+ msg+="\nPagamento: "+pagamento;
+ if(pagamento==="Dinheiro"){
+  msg+="\nTroco para: "+money(recebido);
+  msg+="\nTroco: "+money(recebido-total);
+ }
+ if(obs)msg+="\nObservações: "+obs;
+ msg+="\n\nAguardo a confirmação da loja.";
+
+ const url="https://wa.me/5538999448465?text="+encodeURIComponent(msg);
+ window.location.href=url;
+}
+document.getElementById("dcEntrega").addEventListener("change",atualizarCheckout);
+document.getElementById("dcPagamento").addEventListener("change",atualizarCheckout);
+document.getElementById("dcTroco").addEventListener("input",calcularTrocoCheckout);
+document.getElementById("digasCheckout").addEventListener("click",e=>{
+ if(e.target.id==="digasCheckout")fecharCheckout();
+});
+
 init().catch(()=>document.getElementById("products").textContent="Erro ao carregar o cardápio.");
 </script>
 </body>
