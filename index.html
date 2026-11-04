@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0c0c">
+<title>DIGAS NA BRASA | Sabor que pega fogo!</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0c0c0c;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:28px 15px;background:#171717;border-bottom:2px solid #ff6d00}
+.logo{font-size:30px;font-weight:900}
+.logo span{color:#ff6d00}
+header p{color:#bbb}
+h2{color:#ff6d00}
+main{max-width:1100px;margin:auto;padding:15px}
+.categories{display:flex;gap:9px;overflow-x:auto;padding:15px 0}
+.categories button{white-space:nowrap;background:#242424;color:white;border:1px solid #444;padding:12px 16px;border-radius:22px}
+.categories button.active{background:#ff6d00;color:#111;border-color:#ff6d00}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:15px}
+.card{background:#1e1e1e;border-radius:15px;overflow:hidden;border:1px solid #333}
+.card img{width:100%;height:180px;object-fit:contain;background:#292929}
+.info{padding:14px}
+.info h3{margin:0 0 8px}
+.info p{color:#bbb;font-size:14px;min-height:38px}
+.price{color:#ff6d00;font-weight:bold;font-size:22px}
+button{cursor:pointer}
+.add{background:#ff6d00;border:0;border-radius:8px;padding:11px;color:#111;font-weight:bold;width:100%;margin-top:10px}
+.cart{position:sticky;bottom:0;background:#181818;border-top:2px solid #ff6d00;padding:14px;text-align:center;margin-top:25px}
+.cart button{background:#ff6d00;border:0;padding:14px 24px;border-radius:10px;font-weight:bold}
+footer{text-align:center;padding:25px;color:#aaa}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🔥 DIGAS <span>NA BRASA</span></div>
+<p>Sabor que pega fogo!</p>
+</header>
+<main>
+<h2>Nosso cardápio</h2>
+<div class="categories" id="categories"></div>
+<div class="products" id="products">Carregando cardápio...</div>
+</main>
+<div class="cart">
+<div id="total">0 itens • R$ 0,00</div>
+<button onclick="checkout()">FINALIZAR PEDIDO NO WHATSAPP ➜</button>
+</div>
+<footer>🔥 DIGAS NA BRASA • São Francisco • Minas Gerais</footer>
+<script>
+let products=[],cart={},category="Todos";
+const money=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+async function init(){
+ products=await (await fetch("./products.json")).json();
+ const cats=["Todos",...new Set(products.map(p=>p.category))];
+ document.getElementById("categories").innerHTML=cats.map(c=>
+ `<button class="${c==="Todos"?"active":""}" onclick="filter('${c}',this)">${c}</button>`).join("");
+ render();
+}
+function filter(c,b){
+ category=c;
+ document.querySelectorAll(".categories button").forEach(x=>x.classList.remove("active"));
+ b.classList.add("active");render();
+}
+function render(){
+ let list=products.filter(p=>category==="Todos"||p.category===category);
+ document.getElementById("products").innerHTML=list.map(p=>`
+ <article class="card">
+ <img src="${p.image}" alt="${p.name}" loading="lazy">
+ <div class="info">
+ <h3>${p.name}</h3><p>${p.description}</p>
+ <div class="price">${money(p.price)}</div>
+ <button class="add" onclick="add(${p.id})">ADICIONAR AO PEDIDO</button>
+ ${cart[p.id]?`<p>Quantidade: ${cart[p.id]}</p>`:""}
+ </div></article>`).join("");
+ update();
+}
+function add(id){cart[id]=(cart[id]||0)+1;render()}
+function update(){
+ let qty=Object.values(cart).reduce((a,b)=>a+b,0);
+ let total=products.reduce((a,p)=>a+p.price*(cart[p.id]||0),0);
+ document.getElementById("total").textContent=`${qty} itens • ${money(total)}`;
+}
+function checkout(){
+ let selected=products.filter(p=>cart[p.id]);
+ if(!selected.length){alert("Adicione produtos ao pedido.");return}
+ let total=selected.reduce((a,p)=>a+p.price*cart[p.id],0);
+ let msg="🔥 *PEDIDO - DIGAS NA BRASA*%0A";
+ selected.forEach(p=>msg+=`%0A${cart[p.id]}x ${p.name} - ${money(p.price*cart[p.id])}`);
+ msg+=`%0A%0A*TOTAL: ${money(total)}*`;
+ location.href="https://wa.me/5538999448465?text="+msg;
+}
+init().catch(()=>document.getElementById("products").textContent="Erro ao carregar o cardápio.");
+</script>
+</body>
+</html>

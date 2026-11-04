@@ -1,0 +1,274 @@
+[
+  {
+    "id": 0,
+    "name": "COSTELA DA DIGAS",
+    "description": "Brioche, costela desfiada, queijo coalho, cebola dourada e maionese de alho assado.",
+    "price": 28.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_00.jpg"
+  },
+  {
+    "id": 1,
+    "name": "MATA-FOME CREMOSO",
+    "description": "Pão brioche, hambúrguer suculento, cream cheese, ovo, bacon crocante, salsicha, calabresa, milho, batata palha e picles.",
+    "price": 26.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_01.jpg"
+  },
+  {
+    "id": 2,
+    "name": "BRASA COMPLETO",
+    "description": "Pão tostado, hambúrguer suculento, muçarela, ovo, bacon, calabresa, batata palha, alface, tomate e molho especial da casa.",
+    "price": 29.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_02.jpg"
+  },
+  {
+    "id": 3,
+    "name": "ESPECIAL DA CASA",
+    "description": "Brioche, hambúrguer, queijo coalho, cebola e barbecue levemente picante.",
+    "price": 27.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_03.jpg"
+  },
+  {
+    "id": 4,
+    "name": "CHURRASCO NO PÃO",
+    "description": "Pão francês, churrasco fatiado, muçarela e vinagrete escorrido. Maionese de alho opcional.",
+    "price": 24.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_04.jpg"
+  },
+  {
+    "id": 5,
+    "name": "JANTINHA DE FRANGO",
+    "description": "Arroz, tropeiro, farofa, vinagrete separado e sobrecoxa desossada.",
+    "price": 19.9,
+    "category": "Jantinhas",
+    "image": "images/digas_foto_05.jpg"
+  },
+  {
+    "id": 6,
+    "name": "JANTINHA DE LINGUIÇA",
+    "description": "Arroz, tropeiro, farofa, vinagrete separado e linguiça toscana.",
+    "price": 19.9,
+    "category": "Jantinhas",
+    "image": "images/digas_foto_06.jpg"
+  },
+  {
+    "id": 7,
+    "name": "JANTINHA BOVINA",
+    "description": "Arroz, tropeiro, farofa, vinagrete separado e carne bovina.",
+    "price": 24.9,
+    "category": "Jantinhas",
+    "image": "images/digas_foto_07.jpg"
+  },
+  {
+    "id": 8,
+    "name": "MISTA DA DIGAS",
+    "description": "Arroz, tropeiro, farofa, vinagrete, carne bovina, frango e linguiça.",
+    "price": 26.9,
+    "category": "Jantinhas",
+    "image": "images/digas_foto_08.jpg"
+  },
+  {
+    "id": 9,
+    "name": "FRANGO CREMOSO",
+    "description": "Mandioca, frango desfiado, alho e cheiro-verde. Torradinhas separadas.",
+    "price": 17.9,
+    "category": "Caldos",
+    "image": "images/digas_foto_09.jpg"
+  },
+  {
+    "id": 10,
+    "name": "CARNE-SECA CREMOSA",
+    "description": "Mandioca, carne-seca desfiada e cebola refogada. Torradinhas separadas.",
+    "price": 21.9,
+    "category": "Caldos",
+    "image": "images/digas_foto_10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "VACA ATOLADA",
+    "description": "Mandioca com costela desfiada e caldo do cozimento. Torradinhas separadas.",
+    "price": 21.9,
+    "category": "Caldos",
+    "image": "images/digas_foto_11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "BATATA COM BACON E QUEIJO",
+    "description": "Creme de batata, muçarela e cheiro-verde. Bacon e torradinhas separados.",
+    "price": 18.9,
+    "category": "Caldos",
+    "image": "images/digas_foto_12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "BATATA FRITA",
+    "description": "Porção de batata frita.",
+    "price": 14.9,
+    "category": "Porções",
+    "image": "images/digas_foto_13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "BATATA COM QUEIJO E BACON",
+    "description": "Batata frita com cobertura de queijo e bacon.",
+    "price": 21.9,
+    "category": "Porções",
+    "image": "images/digas_foto_14.jpg"
+  },
+  {
+    "id": 15,
+    "name": "MANDIOCA FRITA",
+    "description": "Porção de mandioca frita.",
+    "price": 16.9,
+    "category": "Porções",
+    "image": "images/digas_foto_15.jpg"
+  },
+  {
+    "id": 16,
+    "name": "PÃO DE ALHO",
+    "description": "Uma unidade dourada na brasa.",
+    "price": 6.9,
+    "category": "Porções",
+    "image": "images/digas_foto_16.jpg"
+  },
+  {
+    "id": 17,
+    "name": "QUEIJO COALHO NA BRASA",
+    "description": "Um espeto de queijo coalho na brasa.",
+    "price": 7.9,
+    "category": "Porções",
+    "image": "images/digas_foto_17.jpg"
+  },
+  {
+    "id": 18,
+    "name": "ÁGUA SEM GÁS",
+    "description": "500 ml.",
+    "price": 3.5,
+    "category": "Bebidas",
+    "image": "images/digas_foto_18.jpg"
+  },
+  {
+    "id": 19,
+    "name": "ÁGUA COM GÁS",
+    "description": "500 ml.",
+    "price": 4.5,
+    "category": "Bebidas",
+    "image": "images/digas_foto_19.jpg"
+  },
+  {
+    "id": 20,
+    "name": "REFRIGERANTE LATA",
+    "description": "350 ml. Consulte os sabores disponíveis.",
+    "price": 6.0,
+    "category": "Bebidas",
+    "image": "images/digas_foto_20.jpg"
+  },
+  {
+    "id": 21,
+    "name": "REFRIGERANTE 2 LITROS",
+    "description": "Consulte os sabores disponíveis.",
+    "price": 13.0,
+    "category": "Bebidas",
+    "image": "images/digas_foto_21.jpg"
+  },
+  {
+    "id": 22,
+    "name": "SUCO DE ABACAXI",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7.0,
+    "category": "Bebidas",
+    "image": "images/digas_foto_22.jpg"
+  },
+  {
+    "id": 23,
+    "name": "SUCO DE GOIABA",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7.0,
+    "category": "Bebidas",
+    "image": "images/digas_foto_23.jpg"
+  },
+  {
+    "id": 24,
+    "name": "SUCO DE MARACUJÁ",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7.0,
+    "category": "Bebidas",
+    "image": "images/digas_foto_24.jpg"
+  },
+  {
+    "id": 25,
+    "name": "BRASA BURGER",
+    "description": "Pão tostado, hambúrguer, muçarela, alface, tomate e molho da casa.",
+    "price": 19.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_25.jpg"
+  },
+  {
+    "id": 26,
+    "name": "DUPLO NA BRASA",
+    "description": "Brioche, dois hambúrgueres, muçarela, bacon, cebola dourada e molho da casa.",
+    "price": 34.9,
+    "category": "Lanches",
+    "image": "images/digas_foto_26.jpg"
+  },
+  {
+    "id": 27,
+    "name": "COMBO MATA-FOME",
+    "description": "1 Mata-Fome Cremoso + 1 porção de batata frita + 1 refrigerante lata. Informe o sabor nas observações.",
+    "price": 42.9,
+    "category": "Combos",
+    "image": "images/digas_foto_27.jpg"
+  },
+  {
+    "id": 28,
+    "name": "COMBO COSTELA",
+    "description": "1 Costela da Digas + 1 porção de batata frita + 1 refrigerante lata. Informe o sabor nas observações.",
+    "price": 44.9,
+    "category": "Combos",
+    "image": "images/digas_foto_28.jpg"
+  },
+  {
+    "id": 29,
+    "name": "COMBO DUPLA",
+    "description": "2 Mata-Fome Cremosos + 1 porção de batata frita + 2 refrigerantes lata. Informe os sabores nas observações.",
+    "price": 74.9,
+    "category": "Combos",
+    "image": "images/digas_foto_29.jpg"
+  },
+  {
+    "id": 30,
+    "name": "HAMBÚRGUER EXTRA",
+    "description": "Uma unidade. Informe nas observações em qual lanche adicionar.",
+    "price": 6.0,
+    "category": "Adicionais",
+    "image": "images/digas_foto_30.jpg"
+  },
+  {
+    "id": 31,
+    "name": "BACON EXTRA",
+    "description": "Informe nas observações em qual lanche adicionar.",
+    "price": 4.0,
+    "category": "Adicionais",
+    "image": "images/digas_foto_31.jpg"
+  },
+  {
+    "id": 32,
+    "name": "CALABRESA EXTRA",
+    "description": "Informe nas observações em qual lanche adicionar.",
+    "price": 4.0,
+    "category": "Adicionais",
+    "image": "images/digas_foto_32.jpg"
+  },
+  {
+    "id": 33,
+    "name": "SALSICHA EXTRA",
+    "description": "Uma unidade. Informe nas observações em qual lanche adicionar.",
+    "price": 2.5,
+    "category": "Adicionais",
+    "image": "images/digas_foto_33.jpg"
+  }
+]
