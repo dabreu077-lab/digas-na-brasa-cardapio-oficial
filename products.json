@@ -134,5 +134,61 @@
     "category": "Lanches",
     "image": "images/digas_foto_36.jpg",
     "id": 36
+  },
+  {
+    "id": 13,
+    "name": "BATATA FRITA",
+    "description": "Porção de batata frita.",
+    "price": 14.9,
+    "category": "Acompanhamentos",
+    "image": "images/digas_foto_13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "BATATA COM QUEIJO E BACON",
+    "description": "Batata frita com cobertura de queijo e bacon.",
+    "price": 21.9,
+    "category": "Acompanhamentos",
+    "image": "images/digas_foto_14.jpg"
+  },
+  {
+    "id": 20,
+    "name": "REFRIGERANTE LATA",
+    "description": "350 ml. Consulte os sabores disponíveis.",
+    "price": 6,
+    "category": "Bebidas",
+    "image": "images/digas_foto_20.jpg"
+  },
+  {
+    "id": 21,
+    "name": "REFRIGERANTE 2 LITROS",
+    "description": "Consulte os sabores disponíveis.",
+    "price": 13,
+    "category": "Bebidas",
+    "image": "images/digas_foto_21.jpg"
+  },
+  {
+    "id": 22,
+    "name": "SUCO DE ABACAXI",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7,
+    "category": "Bebidas",
+    "image": "images/digas_foto_22.jpg"
+  },
+  {
+    "id": 23,
+    "name": "SUCO DE GOIABA",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7,
+    "category": "Bebidas",
+    "image": "images/digas_foto_23.jpg"
+  },
+  {
+    "id": 24,
+    "name": "SUCO DE MARACUJÁ",
+    "description": "Suco de polpa, 400 ml.",
+    "price": 7,
+    "category": "Bebidas",
+    "image": "images/digas_foto_24.jpg"
   }
 ]
