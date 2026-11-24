@@ -106,7 +106,9 @@ border-radius:8px;font-weight:bold}
   </select>
 
   <div id="dcPix" class="hint">
-   Pix CNPJ: 62.709.645/0001-55<br>
+   <strong>Pix pessoal — chave CPF</strong><br>
+   <span id="dcPixKey">Chave Pix será configurada pela loja.</span><br>
+   <button type="button" onclick="copiarPix()" style="margin-top:8px;padding:10px;border:0;border-radius:8px;background:#ff6d00;color:#111;font-weight:bold">COPIAR CHAVE PIX</button><br>
    Confirme o pedido com a loja antes de pagar.
   </div>
 
@@ -157,15 +159,38 @@ function render(){
  <h3>${p.name}</h3><p>${p.description}</p>
  <div class="price">${money(p.price)}</div>
  <button class="add" onclick="add(${p.id})">ADICIONAR AO PEDIDO</button>
- ${cart[p.id]?`<p>Quantidade: ${cart[p.id]}</p>`:""}
+ ${cart[p.id]?`<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0"><button type="button" onclick="removeOne(${p.id})" style="width:42px;height:42px;padding:0;font-size:24px;background:#333;color:white;border:1px solid #ff6d00;border-radius:8px">−</button><strong style="font-size:18px"> ${cart[p.id]} </strong><button type="button" onclick="add(${p.id})" style="width:42px;height:42px;padding:0;font-size:24px;background:#ff6d00;color:#111;border:0;border-radius:8px">+</button></div>`:""}
  </div></article>`).join("");
  update();
 }
 function add(id){cart[id]=(cart[id]||0)+1;render()}
+function removeOne(id){
+ if(!cart[id]) return;
+ if(cart[id]<=1) delete cart[id];
+ else cart[id]--;
+ render();
+}
 function update(){
  let qty=Object.values(cart).reduce((a,b)=>a+b,0);
  let total=products.reduce((a,p)=>a+p.price*(cart[p.id]||0),0);
  document.getElementById("total").textContent=`${qty} itens • ${money(total)}`;
+}
+
+// Configure localmente a chave Pix CPF da loja.
+const PIX_CPF = "";
+
+function copiarPix(){
+ if(!PIX_CPF){
+  alert("A chave Pix CPF ainda precisa ser configurada pela loja.");
+  return;
+ }
+ if(navigator.clipboard && window.isSecureContext){
+  navigator.clipboard.writeText(PIX_CPF)
+   .then(()=>alert("Chave Pix copiada!"))
+   .catch(()=>alert("Não foi possível copiar a chave Pix."));
+ }else{
+  alert("Copie manualmente a chave Pix: "+PIX_CPF);
+ }
 }
 
 function checkout(){
