@@ -137,7 +137,7 @@ border-radius:8px;font-weight:bold}
 let products=[],cart={},category="Todos";
 const money=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 async function init(){
- products=await (await fetch("./products.json")).json();
+ products=await (await fetch("./products.json?v="+Date.now(),{cache:"no-store"})).json();
  const cats=["Todos",...new Set(products.map(p=>p.category))];
  document.getElementById("categories").innerHTML=cats.map(c=>
  `<button class="${c==="Todos"?"active":""}" onclick="filter('${c}',this)">${c}</button>`).join("");
