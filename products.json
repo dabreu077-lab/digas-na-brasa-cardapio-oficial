@@ -18,7 +18,7 @@
   {
     "id": 2,
     "name": "BRASA COMPLETO",
-    "description": "Pão tostado, hambúrguer suculento, muçarela, ovo, bacon, calabresa, batata palha, alface, tomate e molho especial da casa.",
+    "description": "Pão tostado, hambúrguer suculento, frango desfiado, muçarela, ovo, bacon, calabresa, batata palha, alface, tomate e molho especial da casa.",
     "price": 29.9,
     "category": "Lanches",
     "image": "images/digas_foto_02.jpg"
@@ -38,166 +38,6 @@
     "price": 24.9,
     "category": "Lanches",
     "image": "images/digas_foto_04.jpg"
-  },
-  {
-    "id": 5,
-    "name": "JANTINHA DE FRANGO",
-    "description": "Arroz, tropeiro, farofa, vinagrete separado e sobrecoxa desossada.",
-    "price": 19.9,
-    "category": "Jantinhas",
-    "image": "images/digas_foto_05.jpg"
-  },
-  {
-    "id": 6,
-    "name": "JANTINHA DE LINGUIÇA",
-    "description": "Arroz, tropeiro, farofa, vinagrete separado e linguiça toscana.",
-    "price": 19.9,
-    "category": "Jantinhas",
-    "image": "images/digas_foto_06.jpg"
-  },
-  {
-    "id": 7,
-    "name": "JANTINHA BOVINA",
-    "description": "Arroz, tropeiro, farofa, vinagrete separado e carne bovina.",
-    "price": 24.9,
-    "category": "Jantinhas",
-    "image": "images/digas_foto_07.jpg"
-  },
-  {
-    "id": 8,
-    "name": "MISTA DA DIGAS",
-    "description": "Arroz, tropeiro, farofa, vinagrete, carne bovina, frango e linguiça.",
-    "price": 26.9,
-    "category": "Jantinhas",
-    "image": "images/digas_foto_08.jpg"
-  },
-  {
-    "id": 9,
-    "name": "FRANGO CREMOSO",
-    "description": "Mandioca, frango desfiado, alho e cheiro-verde. Torradinhas separadas.",
-    "price": 17.9,
-    "category": "Caldos",
-    "image": "images/digas_foto_09.jpg"
-  },
-  {
-    "id": 10,
-    "name": "CARNE-SECA CREMOSA",
-    "description": "Mandioca, carne-seca desfiada e cebola refogada. Torradinhas separadas.",
-    "price": 21.9,
-    "category": "Caldos",
-    "image": "images/digas_foto_10.jpg"
-  },
-  {
-    "id": 11,
-    "name": "VACA ATOLADA",
-    "description": "Mandioca com costela desfiada e caldo do cozimento. Torradinhas separadas.",
-    "price": 21.9,
-    "category": "Caldos",
-    "image": "images/digas_foto_11.jpg"
-  },
-  {
-    "id": 12,
-    "name": "BATATA COM BACON E QUEIJO",
-    "description": "Creme de batata, muçarela e cheiro-verde. Bacon e torradinhas separados.",
-    "price": 18.9,
-    "category": "Caldos",
-    "image": "images/digas_foto_12.jpg"
-  },
-  {
-    "id": 13,
-    "name": "BATATA FRITA",
-    "description": "Porção de batata frita.",
-    "price": 14.9,
-    "category": "Porções",
-    "image": "images/digas_foto_13.jpg"
-  },
-  {
-    "id": 14,
-    "name": "BATATA COM QUEIJO E BACON",
-    "description": "Batata frita com cobertura de queijo e bacon.",
-    "price": 21.9,
-    "category": "Porções",
-    "image": "images/digas_foto_14.jpg"
-  },
-  {
-    "id": 15,
-    "name": "MANDIOCA FRITA",
-    "description": "Porção de mandioca frita.",
-    "price": 16.9,
-    "category": "Porções",
-    "image": "images/digas_foto_15.jpg"
-  },
-  {
-    "id": 16,
-    "name": "PÃO DE ALHO",
-    "description": "Uma unidade dourada na brasa.",
-    "price": 6.9,
-    "category": "Porções",
-    "image": "images/digas_foto_16.jpg"
-  },
-  {
-    "id": 17,
-    "name": "QUEIJO COALHO NA BRASA",
-    "description": "Um espeto de queijo coalho na brasa.",
-    "price": 7.9,
-    "category": "Porções",
-    "image": "images/digas_foto_17.jpg"
-  },
-  {
-    "id": 18,
-    "name": "ÁGUA SEM GÁS",
-    "description": "500 ml.",
-    "price": 3.5,
-    "category": "Bebidas",
-    "image": "images/digas_foto_18.jpg"
-  },
-  {
-    "id": 19,
-    "name": "ÁGUA COM GÁS",
-    "description": "500 ml.",
-    "price": 4.5,
-    "category": "Bebidas",
-    "image": "images/digas_foto_19.jpg"
-  },
-  {
-    "id": 20,
-    "name": "REFRIGERANTE LATA",
-    "description": "350 ml. Consulte os sabores disponíveis.",
-    "price": 6.0,
-    "category": "Bebidas",
-    "image": "images/digas_foto_20.jpg"
-  },
-  {
-    "id": 21,
-    "name": "REFRIGERANTE 2 LITROS",
-    "description": "Consulte os sabores disponíveis.",
-    "price": 13.0,
-    "category": "Bebidas",
-    "image": "images/digas_foto_21.jpg"
-  },
-  {
-    "id": 22,
-    "name": "SUCO DE ABACAXI",
-    "description": "Suco de polpa, 400 ml.",
-    "price": 7.0,
-    "category": "Bebidas",
-    "image": "images/digas_foto_22.jpg"
-  },
-  {
-    "id": 23,
-    "name": "SUCO DE GOIABA",
-    "description": "Suco de polpa, 400 ml.",
-    "price": 7.0,
-    "category": "Bebidas",
-    "image": "images/digas_foto_23.jpg"
-  },
-  {
-    "id": 24,
-    "name": "SUCO DE MARACUJÁ",
-    "description": "Suco de polpa, 400 ml.",
-    "price": 7.0,
-    "category": "Bebidas",
-    "image": "images/digas_foto_24.jpg"
   },
   {
     "id": 25,
@@ -243,7 +83,7 @@
     "id": 30,
     "name": "HAMBÚRGUER EXTRA",
     "description": "Uma unidade. Informe nas observações em qual lanche adicionar.",
-    "price": 6.0,
+    "price": 6,
     "category": "Adicionais",
     "image": "images/digas_foto_30.jpg"
   },
@@ -251,7 +91,7 @@
     "id": 31,
     "name": "BACON EXTRA",
     "description": "Informe nas observações em qual lanche adicionar.",
-    "price": 4.0,
+    "price": 4,
     "category": "Adicionais",
     "image": "images/digas_foto_31.jpg"
   },
@@ -259,7 +99,7 @@
     "id": 32,
     "name": "CALABRESA EXTRA",
     "description": "Informe nas observações em qual lanche adicionar.",
-    "price": 4.0,
+    "price": 4,
     "category": "Adicionais",
     "image": "images/digas_foto_32.jpg"
   },
@@ -270,5 +110,29 @@
     "price": 2.5,
     "category": "Adicionais",
     "image": "images/digas_foto_33.jpg"
+  },
+  {
+    "name": "BACON NA BRASA",
+    "description": "Pão, hambúrguer, queijo e bacon crocante.",
+    "price": 15,
+    "category": "Lanches",
+    "image": "images/digas_foto_34.jpg",
+    "id": 34
+  },
+  {
+    "name": "BACON EGG",
+    "description": "Pão, hambúrguer, queijo, bacon e ovo.",
+    "price": 18,
+    "category": "Lanches",
+    "image": "images/digas_foto_35.jpg",
+    "id": 35
+  },
+  {
+    "name": "FRANGO NA BRASA",
+    "description": "Pão, frango desfiado temperado, queijo e molho da casa.",
+    "price": 15,
+    "category": "Lanches",
+    "image": "images/digas_foto_36.jpg",
+    "id": 36
   }
 ]
